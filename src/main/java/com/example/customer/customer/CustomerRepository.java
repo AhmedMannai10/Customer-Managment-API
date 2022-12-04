@@ -1,18 +1,14 @@
 package com.example.customer.customer;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Arrays;
-import java.util.List;
 
 @Repository
-public class CustomerRepository implements ICustomerRepo{
+public interface CustomerRepository
+        extends JpaRepository<Customer, Long> {
 
-    @Override
-    public List<Customer> getCustomers() {
-        return Arrays.asList(
-                new Customer(1L, "The Weeknd", "Messi", "test"),
-                new Customer(4L, "Ahmed ", "Mannai", "Mannai")
-        );
-    }
+
+
+
 }

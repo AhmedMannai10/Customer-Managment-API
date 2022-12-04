@@ -9,7 +9,7 @@ public class CustomerFakeRepo implements ICustomerRepo{
     @Override
     public List<Customer> getCustomers() {
         return Arrays.asList(
-         new Customer(23L, "Ahmed Mannai", "GhostAr", "ghost101")
+         new Customer( "Ahmed Mannai", "GhostAr", "email@gmail.com", "ghost101")
         );
     }
 }
