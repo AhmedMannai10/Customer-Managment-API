@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequestMapping(path = "api/v1/customers")
 @RestController
 public class CustomerController {
 
@@ -15,9 +16,15 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping(path = "api/get_customers")
+    @GetMapping
     List<Customer> getCustomers(){
         return customerService.getCustomers();
+    }
+
+    // get one customer by id
+    @GetMapping(path  = "{customerId}")
+    Customer getCustomer(@PathVariable("customerId") Long id){
+        return customerService.getCustomer(id);
     }
 
     @PostMapping
@@ -32,7 +39,7 @@ public class CustomerController {
         System.out.println(customer);
     }
 
-    @DeleteMapping(path="api/delete/{customerId}")
+    @DeleteMapping(path="delete/{customerId}")
     void deleteCustomer(@PathVariable("customerId") Long id){
         System.out.println("DELETE REQUEST ...");
         System.out.println(id);
