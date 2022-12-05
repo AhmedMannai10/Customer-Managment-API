@@ -2,9 +2,7 @@ package com.example.customer.product;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +19,17 @@ public class ProductController {
     @GetMapping
     List<Product> getProducts(){
         return productService.getProducts();
+    }
+
+
+    @PostMapping
+    void createProduct(@RequestBody Product product){
+         productService.createProduct(product);
+    }
+
+    @GetMapping(path = "{id}")
+    Product getProductById(@PathVariable Long id){
+        return productService.getProductById(id);
     }
 
 
